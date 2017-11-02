@@ -11,7 +11,44 @@ let jobTypes = {
 
 // Your code here
 
+//ship class
+class Ship {
+  constructor(name, type, ability, crew) {
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = [];
+  }
+}
+//if there is a crew member then return their ability, if not then can't perform mission
+missionStatement (sendMission){
+  if(this.crew.length){
+    return this.ability;
+  } else{
+    return "Can't perform a mission yet.";
+  }
+}
+
+//crew class
+class crewMember {
+  constructor(name, job, specialSkill, ship){
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.Ship = null;
+  }
+}
+
+//crew enters ship 
+enterShip (shipType){
+  this.Ship = shipType;
+  shipType.crew.push(this);
+}
+
+
 //tests
+//create a CrewMember with class of name, job, specialSkill, and placing him in ship specified to job
+//crewmember is a class,
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
     it('should have a name, a job, a specialSkill and ship upon instantiation', function(){
@@ -22,6 +59,8 @@ if (typeof describe === 'function'){
       assert.equal(crewMember1.ship, null);
     });
 
+//CrewMember will enter correct ship based on jobtype
+//
     it('can enter a ship', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
       let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
@@ -32,6 +71,7 @@ if (typeof describe === 'function'){
     });
   });
 
+//Say what the Ship's name, type, ability, and members
   describe('Ship', function(){
     it('should have a name, a type, an ability and an empty crew upon instantiation', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
@@ -41,6 +81,7 @@ if (typeof describe === 'function'){
       assert.equal(mav.crew.length, 0);
     });
 
+//when Member for ship is filled, return a mission statement
     it('can return a mission statement correctly', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
       let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
