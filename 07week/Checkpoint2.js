@@ -1,5 +1,5 @@
 'use strict';
-
+//given userArray of four clients
 const userArray = [
     {
             "customer": {
@@ -42,7 +42,7 @@ const userArray = [
             }
         },
 ];
-
+//use userArray.map function to call new array with requested functions to pass through each customer and display as string
 const client = userArray.map((person)=> {
     return `${person.customer.customerName} paid $${person.customer.productPrice} for ${person.customer.product} in ${person.customer.customerCity}, ${person.customer.customerState}`
 });
